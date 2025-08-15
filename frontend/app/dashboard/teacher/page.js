@@ -3,6 +3,7 @@ import { useState } from "react";
 import RoleGuard from "../../../components/RoleGuard";
 import AttendanceForm from "../../../components/AttendanceForm";
 import AttendanceTable from "../../../components/AttendanceTable";
+import EnrollmentRequests from "../../../components/EnrollmentRequests";
 import {
   BookOpenIcon,
   UserGroupIcon,
@@ -10,6 +11,7 @@ import {
   ChartBarIcon,
   AcademicCapIcon,
   ClockIcon,
+  BellIcon,
 } from "@heroicons/react/24/outline";
 
 export default function TeacherDashboard() {
@@ -22,6 +24,7 @@ export default function TeacherDashboard() {
 
   const tabs = [
     { id: "overview", name: "Overview", icon: ChartBarIcon },
+    { id: "enrollment-requests", name: "Enrollment Requests", icon: BellIcon },
     { id: "attendance", name: "Mark Attendance", icon: CalendarIcon },
     { id: "view-attendance", name: "View Attendance", icon: BookOpenIcon },
   ];
@@ -91,6 +94,19 @@ export default function TeacherDashboard() {
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <button
+                  onClick={() => setActiveTab("enrollment-requests")}
+                  className="p-4 bg-orange-50 hover:bg-orange-100 rounded-lg border border-orange-200 transition-colors duration-200 text-left"
+                >
+                  <BellIcon className="h-6 w-6 text-orange-600 mb-2" />
+                  <div className="font-medium text-orange-900">
+                    Enrollment Requests
+                  </div>
+                  <div className="text-sm text-orange-600">
+                    Review and manage student enrollment requests
+                  </div>
+                </button>
+
+                <button
                   onClick={() => setActiveTab("attendance")}
                   className="p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 transition-colors duration-200 text-left"
                 >
@@ -117,6 +133,25 @@ export default function TeacherDashboard() {
                 </button>
               </div>
             </div>
+          </div>
+        );
+
+      case "enrollment-requests":
+        return (
+          <div className="space-y-6">
+            <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                <BellIcon className="h-6 w-6 text-blue-600 mr-2" />
+                Enrollment Requests
+              </h2>
+              <p className="text-gray-600 mb-6">
+                Review and manage student enrollment requests for your courses.
+                Approve or reject requests to control student access to your
+                classes.
+              </p>
+            </div>
+
+            <EnrollmentRequests />
           </div>
         );
 

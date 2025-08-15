@@ -101,7 +101,7 @@ export default function HomePage() {
   const handleEnroll = async (courseId) => {
     try {
       setEnrolling((prev) => ({ ...prev, [courseId]: true }));
-      await api.post("/api/enrollments/request", { course_id: courseId });
+      await api.post("/enrollments/request", { course_id: courseId });
 
       // Update enrollment status locally
       setEnrollmentStatuses((prev) => ({ ...prev, [courseId]: "pending" }));
@@ -258,6 +258,9 @@ export default function HomePage() {
           <ScrollableCourses
             courses={enrolledCourses}
             loading={enrolledLoading}
+            onEnroll={null}
+            enrolling={{}}
+            enrollmentStatuses={{}}
             title="My Enrolled Courses"
             showEnrollButton={false}
             variant="compact"

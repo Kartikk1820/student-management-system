@@ -6,6 +6,7 @@ export { default as QuickActionCard } from "./QuickActionCard";
 export { default as CourseDetailsModal } from "./CourseDetailsModal";
 export { default as AttendanceForm } from "./AttendanceForm";
 export { default as AttendanceTable } from "./AttendanceTable";
+export { default as EnrollmentRequests } from "./EnrollmentRequests";
 export { default as Navbar } from "./Navbar";
 export { default as RoleGuard } from "./RoleGuard";
 export { default as Sidebar } from "./Sidebar";

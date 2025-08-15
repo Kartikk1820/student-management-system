@@ -75,10 +75,10 @@ const CourseCard = ({
       "bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-200";
 
     if (variant === "compact") {
-      return `${baseClasses} min-w-[280px] flex-shrink-0`;
+      return `${baseClasses} w-[280px] h-[420px] flex-shrink-0`;
     }
 
-    return `${baseClasses} min-w-[320px] flex-shrink-0`;
+    return `${baseClasses} w-[320px] h-[520px] flex-shrink-0`;
   };
 
   const getContentPadding = () => {
@@ -93,10 +93,10 @@ const CourseCard = ({
 
   return (
     <div className={`${getCardClasses()} ${onClick ? "cursor-pointer" : ""}`}>
-      <div className={getContentPadding()}>
+      <div className={`${getContentPadding()} h-full flex flex-col`}>
         {/* Clickable header area */}
         <div
-          className={`mb-4 ${onClick ? "cursor-pointer" : ""}`}
+          className={`flex-1 ${onClick ? "cursor-pointer" : ""}`}
           onClick={onClick ? handleCardClick : undefined}
         >
           <div className="flex items-start justify-between mb-4">
@@ -111,7 +111,7 @@ const CourseCard = ({
             >
               {course.name}
             </h3>
-            <div className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full">
+            <div className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full flex-shrink-0">
               {course.duration} min
             </div>
           </div>
@@ -126,27 +126,27 @@ const CourseCard = ({
 
           {/* Course details - clickable */}
           <div
-            className={`space-y-3 mb-6 ${
+            className={`space-y-3 mb-4 ${
               variant === "compact" ? "space-y-2" : "space-y-3"
             }`}
           >
             <div className="flex items-center text-sm text-gray-500">
-              <UserIcon className="h-4 w-4 mr-2" />
-              <span>Teacher: {course.teacher_name}</span>
+              <UserIcon className="h-4 w-4 mr-2 flex-shrink-0" />
+              <span className="truncate">Teacher: {course.teacher_name}</span>
             </div>
 
             <div className="flex items-center text-sm text-gray-500">
-              <ClockIcon className="h-4 w-4 mr-2" />
+              <ClockIcon className="h-4 w-4 mr-2 flex-shrink-0" />
               <span>Duration: {formatDuration(course.duration)}</span>
             </div>
 
             <div className="flex items-center text-sm text-gray-500">
-              <CalendarIcon className="h-4 w-4 mr-2" />
+              <CalendarIcon className="h-4 w-4 mr-2 flex-shrink-0" />
               <span>Start: {formatDate(course.start_date)}</span>
             </div>
 
             <div className="flex items-center text-sm text-gray-500">
-              <CalendarIcon className="h-4 w-4 mr-2" />
+              <CalendarIcon className="h-4 w-4 mr-2 flex-shrink-0" />
               <span>End: {formatDate(course.end_date)}</span>
             </div>
           </div>
@@ -162,8 +162,8 @@ const CourseCard = ({
           )}
         </div>
 
-        {/* Enrollment button - not clickable area */}
-        {getEnrollmentButton()}
+        {/* Enrollment button - positioned at bottom */}
+        <div className="mt-auto">{getEnrollmentButton()}</div>
       </div>
     </div>
   );

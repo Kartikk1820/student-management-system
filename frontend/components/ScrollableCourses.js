@@ -5,8 +5,8 @@ import CourseCard from "./CourseCard";
 const ScrollableCourses = ({
   courses,
   loading,
-  onEnroll,
-  enrolling,
+  onEnroll = null,
+  enrolling = {},
   enrollmentStatuses = {},
   title = "Available Courses",
   showEnrollButton = true,
@@ -79,16 +79,21 @@ const ScrollableCourses = ({
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {courses.map((course) => (
-            <CourseCard
-              key={course.id}
-              course={course}
-              onEnroll={onEnroll}
-              enrollmentStatus={enrollmentStatuses[course.id]}
-              isEnrolling={enrolling[course.id]}
-              showEnrollButton={showEnrollButton}
-              variant={variant}
-              onClick={onCourseClick}
-            />
+            <div key={course.id} className="flex-shrink-0">
+              <CourseCard
+                course={course}
+                onEnroll={onEnroll}
+                enrollmentStatus={enrollmentStatuses[course.id]}
+                isEnrolling={
+                  enrolling && enrolling[course.id]
+                    ? enrolling[course.id]
+                    : false
+                }
+                showEnrollButton={showEnrollButton}
+                variant={variant}
+                onClick={onCourseClick}
+              />
+            </div>
           ))}
         </div>
       </div>

@@ -16,7 +16,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 );
@@ -30,12 +30,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Debug middleware to check if body is parsed
-app.use((req, res, next) => {
-  if (req.method === "POST" || req.method === "PUT") {
-    console.log("Body after parsing:", req.body);
-  }
-  next();
-});
+// app.use((req, res, next) => {
+//   if (req.method === "POST" || req.method === "PUT") {
+//     console.log("Body after parsing:", req.body);
+//   }
+//   next();
+// });
 
 //Routes
 app.use("/api/auth", authRoutes);

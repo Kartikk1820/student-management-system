@@ -205,23 +205,10 @@ npm run dev
 
 ---
 
-## 📦 Deployment
+## 📦 Deployment (Soon)
 
-**Frontend (Vercel)**
-
-```bash
-cd frontend
-npm run build
-vercel --prod
-```
-
-**Backend (Vercel)**
-
-```bash
-cd backend
-heroku create
-git push heroku main
-```
+-**Frontend (Netlify)**
+-**Backend (Netlify)**
 
 ---
 

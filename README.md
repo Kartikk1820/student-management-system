@@ -205,10 +205,10 @@ npm run dev
 
 ---
 
-## 📦 Deployment
+## 📦 Deployment (Soon)
 
-**Frontend (Vercel)**
-**Backend (Vercel)**
+-**Frontend (Netlify)**
+-**Backend (Netlify)**
 
 ---
 
